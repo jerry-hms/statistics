@@ -1,0 +1,21 @@
+{
+    "name": "hms/statistics",
+    "description": "This is a statistics expansion package based on laravel",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hms",
+            "email": "faded.cn@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hms\\Statistics\\": "src/"
+        }
+    }
+}
