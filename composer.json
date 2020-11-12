@@ -1,7 +1,7 @@
 {
     "name": "hms/statistics",
     "description": "This is a statistics expansion package based on laravel",
-    "type": "composer-plugin",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
