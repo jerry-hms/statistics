@@ -9,7 +9,6 @@
             "email": "faded.cn@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=7.0",
         "jenssegers/mongodb": ">=3.5.0"
