@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Hms\Statistics\Providers;
+namespace Hms\Statistics;
 
 
-use App\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class StatisticsEventServiceProvider extends ServiceProvider
 {

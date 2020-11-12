@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
-class StatisticsInit extends Command
+class StatisticsInitCommand extends Command
 {
     /**
      * The name and signature of the console command.
@@ -52,7 +52,6 @@ class StatisticsInit extends Command
                     }
                     $class->save();
                 }
-                Log::channel('statistics_sync_success')->info('当前模型:' . $namespace . '初始化成功');
             }catch (\Exception $e){
                 Log::channel('statistics_sync_error')->info('当前模型:' . $namespace . '[初始化],错误信息:'. $e->getMessage());
             }

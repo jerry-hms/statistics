@@ -6,14 +6,14 @@ namespace Hms\Statistics\Eloquents;
 
 use Illuminate\Support\Facades\Redis;
 
+/**
+ * Trait Cache
+ * @package Hms\Statistics\Eloquents
+ */
 trait Cache
 {
 
     protected $conditions = [];
-    
-    protected $attributes = [];
-
-    protected $field;
 
     /**
      * 映射哈希字段

@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Closure;
 use Illuminate\Support\Facades\Redis;
 
+
 trait Statistics
 {
     /**
@@ -27,7 +28,7 @@ trait Statistics
 
 
     /**
-     *默认必须的统计维度 日期 Y-m-d
+     * 默认必须的统计维度 日期 Y-m-d
      *
      * @var array
      */
@@ -48,14 +49,6 @@ trait Statistics
     public $incrementFields;
 
     public $statisticsRedis;
-
-
-//    public function __construct()
-//    {
-//        parent::__construct();
-//
-//        $this->statisticsRedis = self::setStatisticsConnection();
-//    }
 
     /**
      * 设置redis连接
@@ -246,7 +239,6 @@ trait Statistics
 
         // 判断是否实现存储后的回调，如果实现则进行调用
         else {
-
             return $alterClosure instanceof Closure ? $alterClosure() : null;
         }
     }

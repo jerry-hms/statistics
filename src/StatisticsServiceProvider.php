@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Hms\Statistics\Providers;
+namespace Hms\Statistics;
 
-use App\Services\Statistics\Console\StatisticsCommand;
-use App\Services\Statistics\Console\StatisticsInit;
+use Hms\Statistics\Console\StatisticsCommand;
+use Hms\Statistics\Console\StatisticsInitCommand;
 use Illuminate\Support\ServiceProvider;
 
 class StatisticsServiceProvider extends ServiceProvider
@@ -15,7 +15,7 @@ class StatisticsServiceProvider extends ServiceProvider
      */
     protected $commands = [
         StatisticsCommand::class,
-        StatisticsInit::class,
+        StatisticsInitCommand::class,
     ];
 
     /**
@@ -25,6 +25,12 @@ class StatisticsServiceProvider extends ServiceProvider
     {
         // 注册commands
         $this->commands($this->commands);
+    }
+
+
+    public function boot()
+    {
+        $this->publishes();
     }
 
 }
