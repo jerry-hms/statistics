@@ -27,10 +27,12 @@ class StatisticsServiceProvider extends ServiceProvider
         $this->commands($this->commands);
     }
 
-
+    /**
+     *
+     */
     public function boot()
     {
-        $this->publishes();
+        $this->publishes([__DIR__.'/../config' => config_path()], 'statistics-config');
     }
 
 }

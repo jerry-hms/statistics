@@ -11,7 +11,9 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.0",
+        "jenssegers/mongodb": ">=3.5",
+        "predis/predis": ">=1.0"
     },
     "autoload": {
         "psr-4": {
