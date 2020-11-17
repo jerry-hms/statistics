@@ -15,6 +15,8 @@ trait Cache
 
     protected $conditions = [];
 
+    protected $statisticsRedis;
+
     /**
      * 映射哈希字段
      *
