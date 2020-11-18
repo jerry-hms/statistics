@@ -9,7 +9,7 @@
 
 # 安装
 ```
-composer require "hms/statistics:1.0"
+composer require hms/statistics
 ```
 
 # 配置
