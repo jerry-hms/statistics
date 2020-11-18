@@ -5,7 +5,7 @@
 # 环境要求
 
 - Laravel >= 5.5
-- Jenssegers/mongodb >= 3.3.*
+- Jenssegers/mongodb >= 3.3
 
 # 安装
 ```
@@ -66,9 +66,9 @@ $example->cache([
 ```
 
 如果你需要在高并发的业务中进行数据统计，那么强烈推荐你使用此方法存储数据，`cache`方法也会将数据按model中定义的规则用hash表保存在你的`redis`中。
-> 如上所说`statistics`、`cache` 方法都会默认将数据按`statisticsConditionFields`定义的字段按 and 语句进行去重操作，如果你不希望你这么做，可以调用[`setDistinct`]("setDistinct")方法自定义你的去重条件。
+
 #### 将redis中存储的数据同步到mongodb
-在使用前你需要开启Laravel提供的任务[调度功能](https://learnku.com/docs/laravel/5.8/scheduling/3924)
+在使用前你需要开启Laravel提供的[任务调度](https://learnku.com/docs/laravel/5.8/scheduling/3924) 功能
 ```
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
@@ -89,5 +89,34 @@ protected function schedule(Schedule $schedule)
 > 注：statistics提供了数据redis的存储与查询方法的封装，但是并未实现在查询mongodb时默认将缓存中的数据读取的功能，此时需要自行将缓存数据读出进行合并操作。
 
 # 其他用法
-### setDistinct
+#### setDistinct
+如果你需要统计UV值那么你可以使用该方法：
+```php
+$example->setDistinct([
+    'client' => 'ios',
+    'device_id' => 'balabala...' 
+]);
+```
+or
+```php
+use Hms\Statistics\Models\StatisticsLog;
+
+// 设置去重条件
+$example->setDistinct(function () {
+    return Example::query()->where('client', 'ios')->whereIn('user_id', 1234)->first();
+});
+
+// 此时应该这样调用cache
+$example->cache([
+    'day'       => Carbon::now()->toDateString(),
+    'number'    => 3
+], function () {
+    StatisticsLog::create([
+        'client'    => 'ios',
+        'user_id'   => 1234
+    ]);
+});
+```
+通过`setDistinct`方法定义你的去重条件，支持数组或闭包形式。如果传入闭包，调用 `cache` 方法则第二个参数需传入一个闭包函数来记录你的去重条件。
+> 注意：去重条件不推荐用or语句，如果这样做就失去了去重的意义。
 

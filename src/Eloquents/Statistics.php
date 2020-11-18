@@ -3,11 +3,8 @@
 
 namespace Hms\Statistics\Eloquents;
 
-use App\Models\Statistics\AppDownloadStatistics;
-use App\Models\Statistics\RechargeStatistics;
 use App\Services\Statistics\Exceptions\StatisticsException;
 use App\Services\Statistics\Models\StatisticsLog;
-use Carbon\Carbon;
 use Closure;
 use Illuminate\Support\Facades\Redis;
 
