@@ -18,7 +18,10 @@
     "autoload": {
         "psr-4": {
             "Hms\\Statistics\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "scripts":{
         "test": "./vendor/bin/phpunit"

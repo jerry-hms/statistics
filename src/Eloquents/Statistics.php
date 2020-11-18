@@ -3,9 +3,9 @@
 
 namespace Hms\Statistics\Eloquents;
 
-use App\Services\Statistics\Exceptions\StatisticsException;
-use App\Services\Statistics\Models\StatisticsLog;
 use Closure;
+use Hms\Statistics\Exceptions\StatisticsException;
+use Hms\Statistics\Models\StatisticsLog;
 use Illuminate\Support\Facades\Redis;
 
 
